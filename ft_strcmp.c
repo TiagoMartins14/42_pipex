@@ -6,11 +6,11 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:11:53 by tiago             #+#    #+#             */
-/*   Updated: 2023/10/02 10:31:58 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:32:08 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pipex.h"
 
 int	ft_strcmp(char *str1, char *str2)
 {

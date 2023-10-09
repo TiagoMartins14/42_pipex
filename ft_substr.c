@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 18:19:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/10/09 18:44:31 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/10/09 18:58:10 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/10/09 18:58:32 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*res;
 	size_t	i;
-	char	*s_dup;
 
-	i = 0;
-	while (s[i])
-		i++;
-	s_dup = malloc(i + 1);
-	if (!s_dup)
+	if (!s)
+		return (NULL);
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	if (start > (size_t)ft_strlen(s))
+		len = 0;
+	res = (char *)malloc(sizeof(char) * (len + 1));
+	if (!res)
 		return (NULL);
 	i = 0;
-	while (s[i])
+	while (i < len)
 	{
-		s_dup[i] = s[i];
+		res[i] = s[start + i];
 		i++;
 	}
-	s_dup[i] = '\0';
-	return (s_dup);
+	res[i] = '\0';
+	return (res);
 }

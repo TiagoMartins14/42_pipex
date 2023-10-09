@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_printf_putstr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 18:19:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/10/09 18:44:31 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/05/20 16:48:30 by patatoss          #+#    #+#             */
+/*   Updated: 2023/05/21 17:46:00 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "ft_printf.h"
 
-char	*ft_strdup(const char *s)
+int	ft_printf_putchar(int c)
 {
-	size_t	i;
-	char	*s_dup;
+	return (write(1, &c, 1));
+}
+
+int	ft_printf_putstr(char *str)
+{
+	int	i;
 
 	i = 0;
-	while (s[i])
-		i++;
-	s_dup = malloc(i + 1);
-	if (!s_dup)
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		s_dup[i] = s[i];
-		i++;
-	}
-	s_dup[i] = '\0';
-	return (s_dup);
+	if (!str)
+		return (write(1, "(null)", 6));
+	while (str[i])
+		write(1, &str[i++], 1);
+	return (i);
 }
