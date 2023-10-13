@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:25:50 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/10/09 18:52:52 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:59:48 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,52 +23,36 @@ int	main(int argc, char **argv)
 void	ft_pipex(char **argv)
 {
 	int	fd[2];
-	int	pid;
-
+	fd[0] = open(argv[4]);
+	fd[1] = open(argv[1]);
+	int	pid1;
+	int	pid2;
+	char	**cmd1;
+	char	**cmd2;
+	
+	cmd1 = ft_split(argv[2], ' ');
+	cmd2 = ft_split(argv[3], ' ');
 	pipe(fd);
-	pid = fork();
-	if (pid == 0)
+	pid1 = fork();
+	if (pid1 == 0)
 	{
-		close(fd[READ_END]);
 		dup2(fd[WRITE_END], STDOUT_FILENO);
-		close(fd[WRITE_END]);
-		// if (execve(argv[1], ft_arg_vec(&argv[2], 2), NULL) == -1)
-		// 	ft_printf("Could not execute execve");
-		if (execve(argv[1], ft_split(argv[2], ' '), NULL) == -1)
-			ft_printf("Could not execute execve");
-	}
-	else
-	{
-		close(fd[WRITE_END]);
-		dup2(fd[READ_END], STDIN_FILENO);
 		close(fd[READ_END]);
-		// if (execve(argv[3], ft_arg_vec(&argv[4], 4), NULL) == -1)
-		// 	ft_printf("Could not execute execve");
-		if (execve(argv[3], ft_split(argv[4], ' '), NULL) == -1)
+		close(fd[WRITE_END]);
+		if (execve(cmd1[0], cmd1[1], NULL) == -1)
 			ft_printf("Could not execute execve");
-		wait(NULL);
 	}
-}
-
-char	**ft_arg_vec(char **argv, int i)
-{
-	char	**arguments;
-	int		num_of_args;
-	int		j;
-	int		k;
-
-	num_of_args = i;
-	j = i;
-	k = 0;
-	while (ft_strcmp(argv[i], "|") != 0 && argv[i])
-		i++;
-	num_of_args = i - num_of_args;
-	arguments = (char **)malloc(sizeof(char *) * num_of_args + 1);
-	while (j < i)
+	pid2 = fork();
+	if (pid2 == 0)
 	{
-		arguments[k] = ft_strdup((const char *)argv[j]);
-		k++;
-		j++;
+		dup2(fd[READ_END], STDIN_FILENO);
+		close(fd[WRITE_END]);
+		close(fd[READ_END]);
+		if (execve(cmd2[0], cmd2[1], NULL) == -1)
+			ft_printf("Could not execute execve");
 	}
-	return (arguments);
+	close(fd[READ_END]);
+	close(fd[WRITE_END]);
+	waitpid(pid1, NULL, 0);
+	waitpid(pid2, NULL, 0);
 }
