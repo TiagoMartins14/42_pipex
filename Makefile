@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+         #
+#    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 18:15:34 by tiaferna          #+#    #+#              #
-#    Updated: 2023/10/12 16:58:07 by patatoss         ###   ########.fr        #
+#    Updated: 2023/10/13 13:19:08 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS = 	main.c			\
 		ft_printf/ft_printf.c			\
 		ft_split.c						\
 		ft_substr.c						\
-		ft_strlen.c
+		ft_strlen.c						\
+		ft_strjoin.c
 
 OBJS = $(SRCS:.c=.o)
 
