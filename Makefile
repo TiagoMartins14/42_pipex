@@ -6,7 +6,7 @@
 #    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 18:15:34 by tiaferna          #+#    #+#              #
-#    Updated: 2023/10/29 10:09:54 by tiaferna         ###   ########.fr        #
+#    Updated: 2023/10/29 10:52:04 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ SRCS = 	main.c			\
 		ft_printf/ft_printf_putnbr.c	\
 		ft_printf/ft_printf_putstr.c	\
 		ft_printf/ft_printf.c			\
-		get_next_line/get_next_line_utils.c	\
-		get_next_line/get_next_line.c	\
 		ft_split.c						\
 		ft_substr.c						\
+		ft_env_paths.c					\
+		ft_check_path.c					\
+		ft_strjoin.c					\
+		ft_strlen.c
 		
 
 OBJS = $(SRCS:.c=.o)

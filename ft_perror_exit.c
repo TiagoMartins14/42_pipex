@@ -6,14 +6,14 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 10:07:41 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/10/29 10:08:24 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/10/29 11:51:17 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_perror_exit(void)
+void	ft_perror_exit(char *str)
 {
-	perror("Error\n");
+	perror(str);
 	exit(EXIT_FAILURE);
 }

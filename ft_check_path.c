@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_check_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 18:19:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/10/29 10:28:18 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/10/29 10:46:18 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/10/29 10:46:47 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_strndup(const char *s, size_t n)
+char	*ft_check_path(char* cmd, char **envp)
 {
-	size_t	i;
-	char	*s_dup;
+	int		i;
+	char	**paths;
+	char	*path;
+	char	*all_paths;
 
+	all_paths = ft_env_paths(envp);
+	paths = ft_split(all_paths, ':');
 	i = 0;
-	while (s[i])
-		i++;
-	s_dup = malloc(i - n + 1);
-	if (!s_dup)
-		return (NULL);
-	i = 0;
-	while (s[n])
+	while (paths[i])
 	{
-		s_dup[i] = s[n];
-		n++;
+		path = ft_strjoin(paths[i], "/");
+		path = ft_strjoin(path, cmd);
+		if (access(path, F_OK | X_OK) == 0)
+			return (path);
 		i++;
 	}
-	s_dup[i] = '\0';
-	return (s_dup);
+	return ("Invalid command\n");
 }

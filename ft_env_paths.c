@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_env_paths.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 18:19:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/10/29 10:28:18 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/10/29 10:19:43 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/10/29 10:43:03 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_strndup(const char *s, size_t n)
+char	*ft_env_paths(char **envp)
 {
-	size_t	i;
-	char	*s_dup;
+	int		i;
+	char	*all_paths;
 
 	i = 0;
-	while (s[i])
-		i++;
-	s_dup = malloc(i - n + 1);
-	if (!s_dup)
-		return (NULL);
-	i = 0;
-	while (s[n])
+	while (envp[i])
 	{
-		s_dup[i] = s[n];
-		n++;
+		if (envp[i][0] == 'P' && envp[i][1] == 'A' && envp[i][2] == 'T' && envp[i][3] == 'H')
+		{
+			all_paths = ft_strndup(envp[i], 5);
+			return (all_paths);
+		}
 		i++;
 	}
-	s_dup[i] = '\0';
-	return (s_dup);
+	ft_printf("No PATH found\n");
+	exit(EXIT_FAILURE);
+	return ("Error");
 }
