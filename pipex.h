@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:26:28 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/10/26 09:47:24 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/10/29 10:02:38 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define WRITE_END	1
 
 void		ft_pipex(char **argv);
+void		ft_perror_exit(void);
 
 // char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_check_path(char* cmd);

@@ -6,7 +6,7 @@
 #    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 18:15:34 by tiaferna          #+#    #+#              #
-#    Updated: 2023/10/26 08:59:52 by tiaferna         ###   ########.fr        #
+#    Updated: 2023/10/29 10:09:54 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 SRCS = 	main.c			\
+		ft_perror_exit.c\
 		ft_strndup.c	\
 		ft_strcmp.c		\
 		ft_printf/ft_printf_putnbr.c	\
