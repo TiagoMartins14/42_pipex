@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_perror_exit.c                                   :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 10:07:41 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/01 18:06:50 by patatoss         ###   ########.fr       */
+/*   Created: 2023/04/14 09:00:15 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/28 11:58:22 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_perror_exit(char *str, int error)
+int	ft_isalpha(int c)
 {
-	perror(str);
-	exit(error);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }

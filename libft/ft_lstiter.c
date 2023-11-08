@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_perror_exit.c                                   :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 10:07:41 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/01 18:06:50 by patatoss         ###   ########.fr       */
+/*   Created: 2023/04/24 16:40:31 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/24 16:42:30 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_perror_exit(char *str, int error)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	perror(str);
-	exit(error);
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_perror_exit.c                                   :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 10:07:41 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/01 18:06:50 by patatoss         ###   ########.fr       */
+/*   Created: 2023/04/21 12:43:26 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/21 12:51:25 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_perror_exit(char *str, int error)
+void	ft_putstr_fd(char *s, int fd)
 {
-	perror(str);
-	exit(error);
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

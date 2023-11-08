@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_perror_exit.c                                   :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 10:07:41 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/01 18:06:50 by patatoss         ###   ########.fr       */
+/*   Created: 2023/04/14 11:03:19 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/28 15:13:49 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_perror_exit(char *str, int error)
+char	*ft_strdup(const char *s)
 {
-	perror(str);
-	exit(error);
+	size_t	i;
+	char	*s_dup;
+
+	i = 0;
+	while (s[i])
+		i++;
+	s_dup = malloc(i + 1);
+	if (!s_dup)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		s_dup[i] = s[i];
+		i++;
+	}
+	s_dup[i] = '\0';
+	return (s_dup);
 }

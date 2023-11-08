@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_perror_exit.c                                   :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 10:07:41 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/01 18:06:50 by patatoss         ###   ########.fr       */
+/*   Created: 2023/04/14 09:02:40 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/21 10:35:02 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_perror_exit(char *str, int error)
+int	ft_tolower(int c)
 {
-	perror(str);
-	exit(error);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }

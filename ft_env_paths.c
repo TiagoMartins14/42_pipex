@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_paths.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 10:19:43 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/10/29 10:43:03 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/02 10:00:26 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char	*ft_env_paths(char **envp)
 		}
 		i++;
 	}
-	ft_printf("No PATH found\n");
-	exit(EXIT_FAILURE);
+	ft_perror_exit("No PATH found\n", 127);
 	return ("Error");
 }

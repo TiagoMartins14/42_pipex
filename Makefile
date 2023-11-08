@@ -3,32 +3,46 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
+#    By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 18:15:34 by tiaferna          #+#    #+#              #
-#    Updated: 2023/10/29 10:52:04 by tiaferna         ###   ########.fr        #
+#    Updated: 2023/11/03 10:10:22 by patatoss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
+
 CC = cc
+
 CFLAGS = -Wall -Wextra -Werror -g
+
 RM = rm -rf
 
-SRCS = 	main.c			\
-		ft_perror_exit.c\
-		ft_strndup.c	\
-		ft_strcmp.c		\
+SRCDIR = src/mandatory
+
+SRCBONDIR = src/bonus
+
+INCDIR	=   includes
+
+LIBFTDIR =  src/libft
+
+SRCS = 	main.c							\
+		ft_perror_exit.c				\
+		ft_strndup.c					\
+		ft_strcmp.c						\
 		ft_printf/ft_printf_putnbr.c	\
 		ft_printf/ft_printf_putstr.c	\
 		ft_printf/ft_printf.c			\
-		ft_split.c						\
-		ft_substr.c						\
+		libft/ft_split.c				\
+		libft/ft_substr.c				\
 		ft_env_paths.c					\
 		ft_check_path.c					\
-		ft_strjoin.c					\
-		ft_strlen.c
-		
+		libft/ft_strjoin.c				\
+		libft/ft_strlen.c				\
+		ft_execute.c					\
+		ft_free_tab.c					\
+		ft_split_paths.c				\
+		ft_free_mem_buff.c
 
 OBJS = $(SRCS:.c=.o)
 
