@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 10:46:18 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/06 12:37:36 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:53:07 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ char	*ft_check_path(char* cmd, char **envp)
 		path = ft_strjoin(paths[i], cmd);
 		if (access(path, F_OK | X_OK) == 0)
 			break ;
-		free(path);
+		//free(path);
 		i++;
 	}
-	ft_free_tab(paths);
+	//ft_free_tab(paths);
 	if (!path)
 		ft_perror_exit("Error\n", 127);
 	return (path);

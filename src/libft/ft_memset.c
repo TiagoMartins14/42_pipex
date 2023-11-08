@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_mem_buff.c                                 :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:19:48 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:57:59 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/04/14 09:02:17 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/21 10:19:03 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_free_mem_buff(char *buffer, char *path, int fd)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	if (buffer)
-		free(buffer);
-	if (path)
-		free(path);
-	if (fd != -1)
-		close(fd);
-	perror(NULL);
-	exit(1);
+	unsigned char	*p;
+	unsigned char	v;
+	size_t			i;
+
+	p = (unsigned char *)s;
+	v = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		*(p + i) = v;
+		i++;
+	}
+	return (s);
 }

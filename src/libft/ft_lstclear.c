@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_mem_buff.c                                 :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:19:48 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:57:59 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/04/24 16:14:14 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/28 12:15:27 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_free_mem_buff(char *buffer, char *path, int fd)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if (buffer)
-		free(buffer);
-	if (path)
-		free(path);
-	if (fd != -1)
-		close(fd);
-	perror(NULL);
-	exit(1);
+	t_list	*node;
+	t_list	*next;
+
+	node = *lst;
+	while (node)
+	{
+		next = node->next;
+		del(node->content);
+		free(node);
+		node = next;
+	}
+	*lst = NULL;
 }

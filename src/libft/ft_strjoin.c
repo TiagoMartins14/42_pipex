@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_mem_buff.c                                 :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:19:48 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:57:59 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/04/14 11:55:40 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/24 17:44:26 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_free_mem_buff(char *buffer, char *path, int fd)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (buffer)
-		free(buffer);
-	if (path)
-		free(path);
-	if (fd != -1)
-		close(fd);
-	perror(NULL);
-	exit(1);
+	size_t	i;
+	size_t	j;
+	char	*newstr;
+
+	i = 0;
+	j = 0;
+	newstr = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (newstr != NULL)
+	{
+		while (s1[i])
+		{
+			newstr[i] = s1[i];
+			i++;
+		}
+		while (s2[j])
+		{
+			newstr[i] = s2[j];
+			i++;
+			j++;
+		}
+		newstr[i] = '\0';
+	}
+	return (newstr);
 }

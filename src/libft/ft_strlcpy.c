@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_mem_buff.c                                 :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:19:48 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:57:59 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/04/14 09:02:28 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/22 16:32:54 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_free_mem_buff(char *buffer, char *path, int fd)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	if (buffer)
-		free(buffer);
-	if (path)
-		free(path);
-	if (fd != -1)
-		close(fd);
-	perror(NULL);
-	exit(1);
+	size_t	i;
+
+	i = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (src[i] && i < (size - 1))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }

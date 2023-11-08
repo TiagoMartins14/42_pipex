@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_mem_buff.c                                 :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:19:48 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:57:59 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/04/14 10:01:05 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/28 13:01:52 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_free_mem_buff(char *buffer, char *path, int fd)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	if (buffer)
-		free(buffer);
-	if (path)
-		free(path);
-	if (fd != -1)
-		close(fd);
-	perror(NULL);
-	exit(1);
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	if (little[0] == '\0')
+		return ((char *)big);
+	while (big[i] && i < len)
+	{
+		while (big[i + j] == little[j] && big[i + j] != '\0' && (i + j) < len)
+		{
+			if (little[j + 1] == '\0')
+				return ((char *)&big[i]);
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (0);
 }

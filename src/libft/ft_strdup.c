@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_mem_buff.c                                 :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:19:48 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:57:59 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/04/14 11:03:19 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/28 15:13:49 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_free_mem_buff(char *buffer, char *path, int fd)
+char	*ft_strdup(const char *s)
 {
-	if (buffer)
-		free(buffer);
-	if (path)
-		free(path);
-	if (fd != -1)
-		close(fd);
-	perror(NULL);
-	exit(1);
+	size_t	i;
+	char	*s_dup;
+
+	i = 0;
+	while (s[i])
+		i++;
+	s_dup = malloc(i + 1);
+	if (!s_dup)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		s_dup[i] = s[i];
+		i++;
+	}
+	s_dup[i] = '\0';
+	return (s_dup);
 }

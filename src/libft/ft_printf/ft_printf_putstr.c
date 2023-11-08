@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_mem_buff.c                                 :+:      :+:    :+:   */
+/*   ft_printf_putstr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:19:48 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:57:59 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/05/20 16:48:30 by patatoss          #+#    #+#             */
+/*   Updated: 2023/05/21 17:46:00 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "ft_printf.h"
 
-void	ft_free_mem_buff(char *buffer, char *path, int fd)
+int	ft_printf_putchar(int c)
 {
-	if (buffer)
-		free(buffer);
-	if (path)
-		free(path);
-	if (fd != -1)
-		close(fd);
-	perror(NULL);
-	exit(1);
+	return (write(1, &c, 1));
+}
+
+int	ft_printf_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (write(1, "(null)", 6));
+	while (str[i])
+		write(1, &str[i++], 1);
+	return (i);
 }

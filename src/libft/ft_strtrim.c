@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_mem_buff.c                                 :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:19:48 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/08 11:57:59 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/04/14 12:17:23 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/04/28 14:45:53 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	ft_free_mem_buff(char *buffer, char *path, int fd)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	if (buffer)
-		free(buffer);
-	if (path)
-		free(path);
-	if (fd != -1)
-		close(fd);
-	perror(NULL);
-	exit(1);
+	char	*res;
+	int		i;
+	int		j;
+
+	if (!s1 || !set)
+		return (0);
+	i = 0;
+	j = ft_strlen(s1);
+	while (s1[i] != '\0' && ft_strchr(set, s1[i]) != 0)
+		i++;
+	while (s1[j - 1] && ft_strchr(set, s1[j]) != 0 && j > i)
+		j--;
+	res = ft_substr(s1, i, j - i + 1);
+	return (res);
 }
