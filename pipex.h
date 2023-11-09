@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:26:28 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/08 12:46:43 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/09 09:14:49 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@ void		ft_execute_in(char **argv, char *path1, char **cmd1, int *fd_pipe);
 void		ft_execute_out(char **argv, char *path2, char **cmd2, int *fd_pipe);
 void		ft_free_mem_buff(char *buffer, char *path, int fd);
 
-char		*ft_check_path(char* cmd, char **envp);
+char		*ft_check_path(char *cmd, char **envp);
 char		*ft_env_paths(char **envp);
 char		**ft_split_paths(char **paths);
 char		*ft_strndup(const char *s, size_t n);
+char		*ft_check_infile(char **argv);
+char		*ft_urandom_infile(void);
+char		*urand_buffer(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:25:50 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/08 12:46:54 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:00:21 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,15 @@ int	main(int argc, char **argv, char **envp)
 {
 	char	**cmd1;
 	char	**cmd2;
+/* 	char *var;
 
+	var = ft_check_path("grepa", envp);
+	ft_printf("%s\n", var);
+	
+	(void)cmd1;
+	(void)cmd2;
+	(void)argv;
+	(void)argc; */
 	if (argc == 5)
 	{
 		cmd1 = ft_split(argv[2], ' ');

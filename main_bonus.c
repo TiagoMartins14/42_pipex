@@ -3,67 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:33:47 by patatoss          #+#    #+#             */
-/*   Updated: 2023/11/07 13:32:45 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:47:31 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char** varp)
+int	main(int argc, char **argv, char** envp)
 {
+	
 /* 	int	i;
 	char	**cmd1;
 	char	**cmd2;
 	char	***all_cmds;
 	
 	i = 2;
-	if (ft_strcmp(argv[1], "here_doc" == 0))
+	if (ft_strncmp(argv[1], "here_doc", ft_strlen("here_doc")) == 0)
 	{
 		
 	}
-	else if (argc >= 5)
+	cmd1 = ft_split(argv[i], ' ');
+	cmd2 = ft_split(argv[i + 1], ' ');
+	ft_pipex(argv, envp, cmd1, cmd2);
+	if (argc > 5)
 	{
+		i = 4
 		while (i < argc)
 		{
 			cmd1 = ft_split(argv[i], ' ');
-			cmd2 = ft_split(argv[i + 1], ' ');
-			ft_pipex(argv, envp, cmd1, cmd2);
+			ft_pipex_bonus(argv, envp, cmd1);
 		}
+		i++;
 	}
 	perror("Invalid input\n"); */
 	check_all_paths(argc, argv, envp);
 	return (COMMAND_NOT_FOUND);
 }
 
-void	ft_pipex_bonus(int argc, char **argv, char **envp)//, char **cmd1, char **cmd2)
+void	ft_pipex_bonus(int argc, char **argv, char **envp, char **cmd1)
 {
 	int		fd_pipe[2];
 	int		pid1;
-	char	*path1;
-	char	*path2;
-	char	***all_cmds;
+	char	*path;
 
 	if (pipe(fd_pipe) == -1)
 	{
-		ft_free_all_tabs(cmd1, cmd2);
+		ft_free_tab(cmd1);
 		ft_perror_exit("Error\n", 1);
 	}
-	all_cmds = all_cmds(argc, argv);
-	path1 = ft_check_path(cmd1[0], envp);
-	path2 = ft_check_path(cmd2[0], envp);
+	path = ft_check_path(cmd1[0], envp);
 	pid1 = fork();
 	if (pid1 == -1)
 	{
-		free(path1);
-		free(path2);
-		ft_free_all_tabs(cmd1, cmd2);
+		free(path);
+		ft_free_tab(cmd1);
 		ft_perror_exit("Error\n", 1);
 	}
 	if (pid1 == 0)
-		ft_execute_in(argv, path1, cmd1, fd_pipe);
+		ft_execute_in(argv, path1, cmd1, );
 	waitpid(pid1, NULL, 0);
 	ft_execute_out(argv, path2, cmd2, fd_pipe);
 }
