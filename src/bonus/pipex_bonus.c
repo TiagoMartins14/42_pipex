@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:18:27 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/10 12:41:05 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/11 18:02:21 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,27 @@ int	main(int argc, char **argv, char **envp)
 {
 	char	**path_array;
 	int		i;
+	char	*infile;
 
+	infile = ft_check_infile(argv[1]);
 	i = 2;
 	if (argc > 4)
 	{
-		open_file(argv[1]);
+		open_file(infile);
 		path_array = create_path_array(envp);
 		if (!path_array)
 			ft_perror_exit("Path not found.", 1);
-		while (i++ < argc - 2)
+		while (i++ < argc - 3)
 			pipex(argv, path_array, envp, i);
-		ft_free_array(path_array);
-		ft_printf("Index: %d\n", i);
+		if (!ft_strncmp(argv[1], "/dev/urandom", ft_strlen("/dev/urandom")))
+		{
+			unlink(infile);
+			free(infile);
+		}
 		execute_out(argv, path_array, envp, i);
+		ft_free_array(path_array);
 	}
+	if (argc == 1)
+		return (1);
 	return (COMMAND_NOT_FOUND);
 }

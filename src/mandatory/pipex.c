@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:37:57 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/10 12:28:58 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/11 13:28:10 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ int	main(int argc, char **argv, char **envp)
 		execute_out(argv, path_array, envp);
 		ft_free_array(path_array);
 	}
+	if (argc == 1)
+		return (1);
 	return (COMMAND_NOT_FOUND);
 }

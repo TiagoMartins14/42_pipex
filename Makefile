@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
+#    By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 18:15:34 by tiaferna          #+#    #+#              #
-#    Updated: 2023/11/10 12:07:19 by tiaferna         ###   ########.fr        #
+#    Updated: 2023/11/10 18:46:57 by patatoss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-BONUS = pipex
-
-RESET   = \033[0m
+NC		= \033[0m
+BOLD	= \033[1m
+ULINE	= \033[4m
 BLACK   = \033[1;30m
 RED     = \033[1;31m
 GREEN   = \033[1;32m
@@ -53,14 +53,12 @@ all: libft $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 	clear
-	@echo "$(GREEN)./pipex executable is ready!$(RESET)"
+	@echo "$(GREEN)./pipex executable is ready!$(NC)"
 
-bonus: libft $(BONUS)
-
-$(BONUS): $(BONUS_OBJS)
-	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBS) -o $(BONUS)
+bonus: libft $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBS) -o $(NAME)
 	clear
-	@echo "$(GREEN)./pipex with $(YELLOW)bonus $(GREEN)executable is ready!$(RESET)"
+	@echo "$(GREEN)./pipex with $(YELLOW)bonus $(GREEN)executable is ready!$(NC)"
 
 libft:
 	cd $(LIBFTDIR) && make
@@ -72,13 +70,13 @@ clean:
 	$(MAKE) -s -C $(LIBFTDIR) clean
 	$(RM) $(OBJS) $(BONUS_OBJS)
 	clear
-	@echo "$(RED)Object files have been deleted!$(RESET)"
+	@echo "$(RED)Object files have been deleted!$(NC)"
 
 fclean: clean
 	$(MAKE) -s -C $(LIBFTDIR) fclean
 	$(RM) $(NAME) $(BONUS)
 	clear
-	@echo "$(RED)Object files and executable have been deleted!$(RESET)"
+	@echo "$(RED)Object files and executable have been deleted!$(NC)"
 
 re: fclean all
 
