@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:51:48 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/10 12:36:26 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/14 07:33:47 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include "../libft/ft_printf/ft_printf.h"
+# include "../libft/get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 
 # define READ_END	0
@@ -41,5 +42,8 @@ void	ft_perror_exit(char *str, int error);
 void	execute_in(char **argv, char **path_array, char **envp, int index);
 void	execute_out(char **argv, char **path_array, char **envp, int i);
 void	free_mem_buff(char *buffer, char *path, int fd);
+void	unlink_and_free(char *infile);
+void	open_here_doc(char *here_doc);
+void	get_input(char *limiter);
 
 #endif

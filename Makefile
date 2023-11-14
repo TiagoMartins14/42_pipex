@@ -3,18 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+         #
+#    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 18:15:34 by tiaferna          #+#    #+#              #
-#    Updated: 2023/11/10 18:46:57 by patatoss         ###   ########.fr        #
+#    Updated: 2023/11/14 07:32:25 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-NC		= \033[0m
+RESET	= \033[0m
 BOLD	= \033[1m
+FAINT	= \033[2m
+ITALIC	= \033[3m
 ULINE	= \033[4m
+SBLINK	= \033[5m
+FBLINK	= \033[6m
+REVCOL	= \033[7m
+CORESETEAL	= \033[8m
+CROSS	= \033[9m
 BLACK   = \033[1;30m
 RED     = \033[1;31m
 GREEN   = \033[1;32m
@@ -40,7 +47,7 @@ SRCS = 	src/mandatory/pipex.c src/mandatory/checkers.c src/mandatory/execute.c s
 		src/mandatory/split_paths.c
 
 BONUS_SRCS = src/bonus/checkers_bonus.c src/bonus/pipex_bonus.c src/bonus/execute_bonus.c src/bonus/memory_frees_bonus.c \
-			src/bonus/split_paths_bonus.c
+			src/bonus/split_paths_bonus.c src/bonus/here_doc_bonus.c
 
 LIBS = -L$(LIBFTDIR) -lft
 
@@ -53,12 +60,12 @@ all: libft $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 	clear
-	@echo "$(GREEN)./pipex executable is ready!$(NC)"
+	@echo "$(GREEN)./pipex executable is ready!$(RESET)"
 
 bonus: libft $(BONUS_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBS) -o $(NAME)
 	clear
-	@echo "$(GREEN)./pipex with $(YELLOW)bonus $(GREEN)executable is ready!$(NC)"
+	@echo "$(GREEN)./pipex with $(YELLOW)bonus $(GREEN)executable is ready!$(RESET)"
 
 libft:
 	cd $(LIBFTDIR) && make
@@ -70,13 +77,13 @@ clean:
 	$(MAKE) -s -C $(LIBFTDIR) clean
 	$(RM) $(OBJS) $(BONUS_OBJS)
 	clear
-	@echo "$(RED)Object files have been deleted!$(NC)"
+	@echo "$(RED)Object files have been deleted!$(RESET)"
 
 fclean: clean
 	$(MAKE) -s -C $(LIBFTDIR) fclean
 	$(RM) $(NAME) $(BONUS)
 	clear
-	@echo "$(RED)Object files and executable have been deleted!$(NC)"
+	@echo "$(RED)Object files and executable have been deleted!$(RESET)"
 
 re: fclean all
 

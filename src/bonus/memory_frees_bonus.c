@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:18:27 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/10 11:48:13 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/14 07:26:54 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,11 @@ void	free_mem_buff(char *buffer, char *path, int fd)
 		close(fd);
 	perror(NULL);
 	exit(1);
+}
+
+void	unlink_and_free(char *infile)
+{
+	unlink(infile);
+	free(infile);
+	return ;
 }

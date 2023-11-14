@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:18:27 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/11 18:02:21 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:13:49 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,23 +65,21 @@ int	main(int argc, char **argv, char **envp)
 
 	infile = ft_check_infile(argv[1]);
 	i = 2;
-	if (argc > 4)
+	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
 	{
-		open_file(infile);
-		path_array = create_path_array(envp);
-		if (!path_array)
-			ft_perror_exit("Path not found.", 1);
-		while (i++ < argc - 3)
-			pipex(argv, path_array, envp, i);
-		if (!ft_strncmp(argv[1], "/dev/urandom", ft_strlen("/dev/urandom")))
-		{
-			unlink(infile);
-			free(infile);
-		}
-		execute_out(argv, path_array, envp, i);
-		ft_free_array(path_array);
+		get_input(argv[2]);
+		i = 3;
 	}
-	if (argc == 1)
-		return (1);
+	else
+		open_file(infile);
+	path_array = create_path_array(envp);
+	if (!path_array)
+		ft_perror_exit("Path not found.", 1);
+	while (i < argc - 2)
+		pipex(argv, path_array, envp, i++);
+	if (!ft_strncmp(argv[1], "/dev/urandom", ft_strlen("/dev/urandom")))
+		unlink_and_free(infile);
+	execute_out(argv, path_array, envp, i);
+	ft_free_array(path_array);
 	return (COMMAND_NOT_FOUND);
 }

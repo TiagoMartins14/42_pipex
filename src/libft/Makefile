@@ -6,7 +6,7 @@
 #    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 17:41:02 by tiaferna          #+#    #+#              #
-#    Updated: 2023/04/28 11:40:09 by tiaferna         ###   ########.fr        #
+#    Updated: 2023/11/14 10:06:07 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,7 @@ SRCS =	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 	ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
 	ft_tolower.c ft_toupper.c \
 	ft_printf/ft_printf.c ft_printf/ft_printf_putnbr.c ft_printf/ft_printf_putstr.c \
-	get_next_line/get_next_line.c get_next_line/get_next_line_bonus.c \
-	get_next_line/get_next_line_utils.c get_next_line/get_next_line_utils_bonus.c
+	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 BONUS_SRCS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 	ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c

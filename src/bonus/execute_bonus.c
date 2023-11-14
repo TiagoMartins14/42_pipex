@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:18:27 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/11 18:06:10 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/14 08:45:23 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	execute_out(char **argv, char **path_array, char **envp, int i)
 	char	*path;
 	char	**cmds;
 
-	cmds = ft_split(argv[i], ' ');
+	cmds = ft_split(argv[i++], ' ');
 	path = check_path(cmds[0], path_array);
-	fd_out = open(argv[i + 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	fd_out = open(argv[i], O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (fd_out == -1)
 	{
 		ft_free_array(path_array);
