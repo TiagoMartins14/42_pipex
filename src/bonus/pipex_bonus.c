@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:18:27 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/14 10:13:49 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/27 23:29:04 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	main(int argc, char **argv, char **envp)
 	int		i;
 	char	*infile;
 
+	command_check(argc, argv);
 	infile = ft_check_infile(argv[1]);
 	i = 2;
 	if (ft_strncmp(argv[1], "here_doc", 9) == 0)

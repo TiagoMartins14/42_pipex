@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
+#    By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 18:15:34 by tiaferna          #+#    #+#              #
-#    Updated: 2023/11/14 07:32:25 by tiaferna         ###   ########.fr        #
+#    Updated: 2023/11/27 23:59:38 by patatoss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ $(NAME): $(OBJS)
 bonus: libft $(BONUS_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBS) -o $(NAME)
 	clear
-	@echo "$(GREEN)./pipex with $(YELLOW)bonus $(GREEN)executable is ready!$(RESET)"
+	@echo "$(GREEN)./pipex with $(YELLOW)$(SBLINK)bonus $(RESET)$(GREEN)executable is ready!$(RESET)"
 
 libft:
 	cd $(LIBFTDIR) && make

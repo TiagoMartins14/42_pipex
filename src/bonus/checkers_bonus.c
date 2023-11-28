@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:18:27 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/10 11:48:18 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/27 23:43:32 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,33 @@ char	*urand_buffer(void)
 	if (close(urand_fd) == -1)
 		free_mem_buff(buffer, NULL, 0);
 	return (buffer);
+}
+
+void	command_check(int argc, char **argv)
+{
+	int	i;
+	int	j;
+	int	flag;
+	
+	i = 2;
+	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
+		i = 3;
+	while (i < argc - 1)
+	{
+		if (!argv[i])
+			ft_perror_exit("Error", 1);
+		j = 0;
+		flag = 0;
+		while (j < ft_strlen(argv[i]))
+		{
+			if (argv[i][j] != '\t' && argv[i][j] != '\n' && argv[i][j] != '\v'\
+			 && argv[i][j] != '\f' && argv[i][j] != '\r' && argv[i][j] != ' ')
+				flag = 1;
+			j++;
+		}
+		if (flag == 0)
+			ft_perror_exit("Error\n", 1);
+		i++;
+	}
+	return ;
 }

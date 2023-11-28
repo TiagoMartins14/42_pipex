@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:46:56 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/10 11:16:17 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/27 23:08:20 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	execute_in(char **argv, char **path_array, char **envp)
 	infile = ft_check_infile(argv[1]);
 	fd_in = open(infile, O_RDONLY);
 	if (fd_in == -1)
-		ft_perror_exit("Error\n", 1);
+		free_array_and_exit(cmds, "Error\n");
 	dup2(fd_in, STDIN_FILENO);
 	close(fd_in);
 	if (!ft_strncmp(argv[1], "/dev/urandom", ft_strlen("/dev/urandom")))

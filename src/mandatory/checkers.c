@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:40:43 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/10 11:15:32 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/27 23:48:06 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,25 @@ char	*urand_buffer(void)
 	if (close(urand_fd) == -1)
 		free_mem_buff(buffer, NULL, 0);
 	return (buffer);
+}
+
+void	command_check(char *arg)
+{
+	int	i;
+	int	flag;
+	
+	i = 0;
+	flag = 0;
+	if (!arg)
+		ft_perror_exit("Error", 1);
+	while (arg[i])
+	{
+		if (arg[i] != '\t' && arg[i] != '\n' && arg[i] != '\v' && \
+		arg[i] != '\f' && arg[i] != '\r' && arg[i] != ' ')
+			flag = 1;
+		i++;
+	}
+	if (flag == 0)
+		ft_perror_exit("Error\n", 1);
+	return ;
 }

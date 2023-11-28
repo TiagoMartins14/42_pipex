@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:37:57 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/14 10:11:28 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/11/27 23:08:30 by patatoss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	pipex(char **argv, char **path_array, char **envp)
 	int	fd_pipe[2];
 	int	pid;
 
+	command_check(argv[2]);
+	command_check(argv[3]);
 	if (pipe(fd_pipe) == -1)
 		free_array_and_exit(path_array, "Pipe error.\n");
 	pid = fork();
