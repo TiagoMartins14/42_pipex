@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patatoss <patatoss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:37:57 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/11/27 23:08:30 by patatoss         ###   ########.fr       */
+/*   Updated: 2023/11/29 07:43:14 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	open_file(char *infile)
 	else
 	{
 		if (access(infile, F_OK) == -1 || access(infile, R_OK) == -1)
-			perror("Infile error.\n");
+			ft_perror_exit("Infile error.\n", 1);
 		fd = open("/dev/null", O_RDONLY);
 		if (fd == -1)
 			ft_perror_exit("Infile error.\n", 1);
