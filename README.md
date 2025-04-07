@@ -10,13 +10,13 @@ This project will let you discover in detail a UNIX mechanism that you already k
 
 ### Requirements
 
-The library is written in C language and needs the **`gcc` compiler** and some standard **C libraries** to run.
+The project is written in C language and needs the **`gcc` compiler** and some standard **C libraries** to run.
 
 ### Instructions
 
-**1. Compiling the library**
+**1. Compiling the project**
 
-To compile the library, go to its path and run:
+To compile the project, go to its path and run:
 
 For all mandatory functions:
 
