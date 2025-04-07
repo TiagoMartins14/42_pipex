@@ -37,7 +37,7 @@ It should be executed in this way:
 ```shell
 ./pipex file1 cmd1 cmd2 file2
 ```
-'file1' and 'file2' are file names, 'cmd1' adn 'cmd2' are shell commands with their parameters.
+'file1' and 'file2' are file names, 'cmd1' ann 'cmd2' are shell commands with their parameters.
 
 The execution of the pipex program should do the same as the next shell command:
 
